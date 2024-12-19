@@ -1,0 +1,24 @@
+version: '3.5'
+services:
+  tailscale:
+    build:
+      context: .
+      args:
+        UPSTREAM_VERSION: v1.78
+    image: tailscale.dnp.dappnode.eth:0.1.0
+    restart: unless-stopped
+    ports:
+      - "28967:28967"
+      - "28967:28967/udp"
+    environment:
+      - TS_AUTHKEY=
+      - EXTRA_OPTS=
+    volumes:
+      - state:/var/lib/tailscale
+    cap_add:
+      - net_admin
+      - sys_module
+    devices:
+      - /dev/net/tun:/dev/net/tun
+volumes:
+  state:

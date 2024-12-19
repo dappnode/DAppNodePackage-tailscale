@@ -1,0 +1,12 @@
+version: "2"
+fields:
+  - id: TS_AUTHKEY
+    target:
+      type: environment
+      name: TS_AUTHKEY
+      service: tailscale
+    title: Tailscale Authkey
+    description: >-
+      The authkey is used to authenticate your
+      device with the Tailscale network. You can find your authkey in the
+      admin console at https://login.tailscale.com/admin/authkeys.
