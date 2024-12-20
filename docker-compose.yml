@@ -7,9 +7,6 @@ services:
         UPSTREAM_VERSION: v1.78
     image: tailscale.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
-    ports:
-      - "28967:28967"
-      - "28967:28967/udp"
     environment:
       - TS_AUTHKEY=
       - EXTRA_OPTS=
