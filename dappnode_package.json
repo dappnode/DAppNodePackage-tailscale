@@ -5,7 +5,8 @@
   "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
   "links": {
-    "homepage": "https://tailscale.com"
+    "homepage": "https://tailscale.com",
+    "docs": "https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
   },
   "license": "GPL-3.0"
 }
