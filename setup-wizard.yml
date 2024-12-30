@@ -9,4 +9,5 @@ fields:
     description: >-
       The authkey is used to authenticate your
       device with the Tailscale network. You can find your authkey in the
-      admin console at https://login.tailscale.com/admin/authkeys.
+      [admin console](https://login.tailscale.com/admin/authkeys).
+      For more information, see our [docs](https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale).
