@@ -8,5 +8,6 @@
     "homepage": "https://tailscale.com",
     "docs": "https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
   },
+  "architectures": ["linux/amd64", "linux/arm64"],
   "license": "GPL-3.0"
 }
