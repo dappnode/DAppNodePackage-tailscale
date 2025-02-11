@@ -8,9 +8,9 @@ services:
     image: tailscale.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
     environment:
-      - TS_AUTHKEY=
-      - ADVERTISE_ROUTES=172.33.0.0/16,10.20.0.0/24 # 172.33.0.0/16 is the current subnet in dappnode and 10.20.0.0/24 will be eventually used as the new subnet
-      - EXTRA_OPTS=
+      - TS_AUTHKEY= # https://tailscale.com/kb/1282/docker#ts_authkey
+      - TS_ROUTES=172.33.0.0/16,10.20.0.0/24 # https://tailscale.com/kb/1282/docker#ts_routes 172.33.0.0/16 is the current subnet in dappnode and 10.20.0.0/24 will be eventually used as the new subnet
+      - TS_EXTRA_ARGS=--advertise-exit-node # https://tailscale.com/kb/1282/docker#ts_extra_args
     volumes:
       - state:/var/lib/tailscale
     cap_add:
