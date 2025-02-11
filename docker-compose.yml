@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 services:
   tailscale:
     build:
@@ -9,6 +9,7 @@ services:
     restart: unless-stopped
     environment:
       - TS_AUTHKEY=
+      - ADVERTISE_ROUTES=172.33.0.0/16,10.20.0.0/24 # 172.33.0.0/16 is the current subnet in dappnode and 10.20.0.0/24 will be eventually used as the new subnet
       - EXTRA_OPTS=
     volumes:
       - state:/var/lib/tailscale
