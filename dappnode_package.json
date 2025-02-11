@@ -1,6 +1,6 @@
 {
   "name": "tailscale.dnp.dappnode.eth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tailscale is a mesh VPN alternative that makes it easy to connect your devices securely.",
   "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
@@ -9,7 +9,7 @@
     "docs": "https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
   },
   "architectures": ["linux/amd64", "linux/arm64"],
-  "upstreamVersion": "v1.78",
+  "upstreamVersion": "v1.80.0",
   "upstreamRepo": "tailscale/tailscale",
   "upstreamArg": "UPSTREAM_VERSION",
   "license": "GPL-3.0"
