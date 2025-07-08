@@ -12,5 +12,8 @@
   "upstreamVersion": "v1.84.2",
   "upstreamRepo": "tailscale/tailscale",
   "upstreamArg": "UPSTREAM_VERSION",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "warnings": {
+    "onMinorUpdate": "When updating or reinstalling Tailscale, a new auth key might be required if the previous one is no longed valid (expired). You can check your current auth key status in the [Tailscale Admin Settings](https://login.tailscale.com/admin/settings/keys). If you encounter issues, generate a new auth key and update it in your Dappnode's Tailscale package settings. For more information see https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
+  }
 }
