@@ -6,8 +6,7 @@
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
   "links": {
     "homepage": "https://tailscale.com",
-    "docs": "https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale",
-    "ui": "https://portainer.dappnode:9443"
+    "docs": "https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
   },
   "architectures": ["linux/amd64", "linux/arm64"],
   "upstreamVersion": "v1.84.2",
