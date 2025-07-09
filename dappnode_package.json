@@ -14,6 +14,9 @@
   "upstreamArg": "UPSTREAM_VERSION",
   "license": "GPL-3.0",
   "warnings": {
-    "onMinorUpdate": "When updating or reinstalling Tailscale, a new auth key might be required if the previous one is no longed valid (expired). You can check your current auth key status in the [Tailscale Admin Settings](https://login.tailscale.com/admin/settings/keys). If you encounter issues, generate a new auth key and update it in your Dappnode's Tailscale package settings. For more information see https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale"
+    "onMinorUpdate": "A manual update in your Tailscale configuration is needed after installing this Tailscale version. First, update your custom DNS settings in your [Tailscale Admin UI](https://login.tailscale.com/admin/dns), ensuring that both \"dappnode\" and \"dappnode.private\" nameservers are set. Then, accept both subnet routes that appear in your Dappnode machine of [Tailscale Machines UI](https://login.tailscale.com/admin/machines). For more information, please refer to [Dappnode Docs](https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale#3-configure-tailscale-to-connect-to-dappnode-internal-networks)."
+  },
+  "requirements" : {
+    "minimumDappnodeVersion": "0.3.2"
   }
 }
