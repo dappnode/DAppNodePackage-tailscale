@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        UPSTREAM_VERSION: v1.90.9
+        UPSTREAM_VERSION: v1.92.2
     image: tailscale.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
     environment:
