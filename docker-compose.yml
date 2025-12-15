@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        UPSTREAM_VERSION: v1.90.9
+        UPSTREAM_VERSION: cmd/cigocacher/d0d993f5d6576b5d97d0242c64bbe2de049d6486
     image: tailscale.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
     environment:
