@@ -3,16 +3,16 @@ name: Bump upstream version
 on:
   schedule:
     - cron: "00 */4 * * *"
-  push:
-    branches:
-      - "master"
-      - "main"
+  workflow_dispatch:
 
 jobs:
-  build:
+  bump-upstream:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
       - run: npx @dappnode/dappnodesdk github-action bump-upstream
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
