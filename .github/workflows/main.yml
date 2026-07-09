@@ -1,35 +1,22 @@
 name: "Main"
 on:
-  repository_dispatch:
   push:
+    branches:
+      - "master"
     paths-ignore:
       - "README.md"
+  repository_dispatch:
+  workflow_dispatch:
 
 jobs:
-  build-hash:
-    runs-on: ubuntu-latest
-    name: Build and post IPFS hash
-    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "22"
-      - run: npx @dappnode/dappnodesdk github-action build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
-          PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
-
   release:
     name: Release
     runs-on: ipfs-dev-gateway
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'repository_dispatch'
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
-          node-version: "22"
+          node-version: "24"
       - name: Log in to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Publish
@@ -37,4 +24,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEVELOPER_ADDRESS: "0xf35960302a07022aba880dffaec2fdd64d5bf1c1"
-          
