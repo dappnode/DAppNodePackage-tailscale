@@ -1,0 +1,27 @@
+name: Package regression tests
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Test authentication recovery, shutdown, and health reporting
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate Compose configuration
+        run: docker compose config --quiet
+      - name: Build package image
+        run: |
+          upstream_version=$(jq -r .upstreamVersion dappnode_package.json)
+          docker build --build-arg "UPSTREAM_VERSION=$upstream_version" -t tailscale-package:test .
+      - name: Ensure TUN device is available
+        run: test -c /dev/net/tun || sudo modprobe tun
+      - name: Smoke-test isolated container startup
+        run: sh tests/container-smoke.sh tailscale-package:test
