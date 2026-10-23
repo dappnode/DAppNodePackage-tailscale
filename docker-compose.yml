@@ -7,6 +7,9 @@ services:
         UPSTREAM_VERSION: v1.104.2
     image: tailscale.dnp.dappnode.eth:0.1.0
     restart: unless-stopped
+    sysctls:
+      net.ipv4.ip_forward: "1"
+      net.ipv6.conf.all.forwarding: "1"
     environment:
       - TS_AUTHKEY=
       - TS_ROUTES=172.33.0.0/16,10.20.0.0/24
