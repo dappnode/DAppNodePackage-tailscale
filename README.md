@@ -58,3 +58,6 @@ isolated Docker network namespace:
 docker build --build-arg UPSTREAM_VERSION=v1.104.2 -t tailscale-package:test .
 sh tests/container-smoke.sh tailscale-package:test
 ```
+
+See [authenticated routing validation](tests/AUTHENTICATED-VALIDATION.md) for
+manual subnet and exit-node results before and after a package restart.
