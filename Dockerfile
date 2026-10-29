@@ -8,6 +8,8 @@ FROM tailscale/tailscale:${UPSTREAM_VERSION}
 ENV TS_STATE_DIR=/var/lib/tailscale
 ENV TS_USERSPACE=false
 ENV TS_AUTH_ONCE=true
+ENV TS_BOOT_TIMEOUT=1h
+ENV TS_DEBUG_FIREWALL_MODE=auto
 
 # Replace the complete system trust store, including individual hashed certificates.
 RUN rm -rf /etc/ssl/certs /usr/share/ca-certificates

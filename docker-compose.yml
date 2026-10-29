@@ -12,12 +12,26 @@ services:
       - TS_ROUTES=172.33.0.0/16,10.20.0.0/24
       - TS_EXTRA_ARGS=--advertise-exit-node
       - TS_DEBUG_FIREWALL_MODE=auto
+      - TS_SOCKET=/run/tailscale/tailscaled.sock
     volumes:
       - state:/var/lib/tailscale
+      - socket:/run/tailscale
     cap_add:
       - net_admin
       - sys_module
     devices:
       - /dev/net/tun:/dev/net/tun
+  reporter:
+    build:
+      context: reporter
+    image: reporter.tailscale.dnp.dappnode.eth:0.1.0
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - socket:/run/tailscale:ro
 volumes:
   state: null
+  socket: null
