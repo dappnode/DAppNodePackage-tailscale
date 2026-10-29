@@ -1,13 +1,17 @@
 version: "2"
 fields:
   - id: TS_AUTHKEY
+    required: false
+    secret: true
     target:
       type: environment
       name: TS_AUTHKEY
       service: tailscale
-    title: Tailscale Authkey
+    title: Tailscale auth key (optional)
     description: >-
-      The authkey is used to authenticate your
-      device with the Tailscale network. You can find your authkey in the
+      Enter an auth key to sign in automatically, or leave this empty to sign in
+      from VPN → Tailscale in a compatible Dappmanager version. To switch from
+      a rejected key to browser sign-in, clear the key and restart the package.
+      You can find your auth key in the
       [admin console](https://login.tailscale.com/admin/authkeys).
       For more information, see our [docs](https://docs.dappnode.io/docs/user/access-your-dappnode/vpn/tailscale).

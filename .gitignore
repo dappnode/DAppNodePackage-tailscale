@@ -2,4 +2,7 @@
   build_*
   releases.json
   docker-compose-tmp.yml
-  
+
+# Rust reporter build output
+/reporter/target/
+
