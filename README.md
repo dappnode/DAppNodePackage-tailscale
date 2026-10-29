@@ -55,7 +55,8 @@ is needed. The container smoke test runs a real unauthenticated daemon in an
 isolated Docker network namespace:
 
 ```sh
-docker build --build-arg UPSTREAM_VERSION=v1.104.2 -t tailscale-package:test .
+upstream_version=$(jq -r .upstreamVersion dappnode_package.json)
+docker build --build-arg "UPSTREAM_VERSION=$upstream_version" -t tailscale-package:test .
 sh tests/container-smoke.sh tailscale-package:test
 ```
 
