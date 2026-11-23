@@ -44,6 +44,16 @@ required. Do not expose this socket to other packages.
 The package uses Dappnode-supported Compose options. Its current validator does
 not allow `read_only` (root filesystem) or `sysctls` service properties.
 
+## Backup and restore
+
+The manifest declares one `backup` item, `tailscaled-state`: the file `/var/lib/tailscale/tailscaled.state` in the `tailscale` service. Dappnode full backups and the package's Backup tab include it.
+
+This file is the device identity. It holds the machine key, node key, node ID, Tailnet Lock key, login profile and daemon preferences. With it, a reinstalled Dappnode rejoins the tailnet as the same device without signing in again: it keeps its Tailscale IPs, MagicDNS name, approved subnet routes and exit node, and tags. The rest of `/var/lib/tailscale` is not backed up because tailscaled rebuilds it or fetches it again. That covers the log buffers and log ID, DERP map cache, TLS certificates, Tailscale SSH host keys, Tailnet Lock cache and Taildrop files. `TS_AUTHKEY` and the other environment settings are restored with the package settings, not from this file.
+
+Tailscaled replaces the file atomically: it writes a temporary file, then renames it. A copy taken while the package runs is therefore one complete version of the file, never a mix of two.
+
+Restoring the file makes the new Dappnode the same Tailscale device as the backed-up one. Do not run both. Two machines with the same node key compete for one tailnet device, and connectivity becomes unreliable for both. Before you start the restored node, switch the old one off (Dappnode's full restore asks for this) or remove its Tailscale package with its data. Do not run `tailscale logout` on either copy to separate them: that signs out the shared device on both. To give a restored node a new identity of its own, remove the Tailscale package with its data on that node, reinstall it and sign in again.
+
 ## Reporting contract
 
 The reporter POSTs to:

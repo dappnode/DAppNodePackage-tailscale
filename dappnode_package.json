@@ -4,6 +4,13 @@
     "linux/arm64"
   ],
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
+  "backup": [
+    {
+      "name": "tailscaled-state",
+      "path": "/var/lib/tailscale/tailscaled.state",
+      "service": "tailscale"
+    }
+  ],
   "description": "Tailscale is a mesh VPN alternative that makes it easy to connect your devices securely.",
   "license": "GPL-3.0",
   "links": {
