@@ -54,6 +54,10 @@ Tailscaled replaces the file atomically: it writes a temporary file, then rename
 
 Restoring the file makes the new Dappnode the same Tailscale device as the backed-up one. Do not run both. Two machines with the same node key compete for one tailnet device, and connectivity becomes unreliable for both. Before you start the restored node, switch the old one off (Dappnode's full restore asks for this) or remove its Tailscale package with its data. Do not run `tailscale logout` on either copy to separate them: that signs out the shared device on both. To give a restored node a new identity of its own, remove the Tailscale package with its data on that node, reinstall it and sign in again.
 
+### Compatibility with Dappmanager versions without full backup
+
+Older Dappmanager versions only have the package's Backup tab. Backing up works as described above. Restoring is different: the tab copies `tailscaled.state` into the running package and restarts it right away, so the restored device comes online at once. Switch the old node off, or remove its Tailscale package with its data, before you restore, not after. If the package on the new Dappnode signed in before the restore (interactively or with `TS_AUTHKEY`), it registered as a separate device. After the restore that device stays offline in the admin console, and you can remove it there. tailscaled does not save its state when it stops, so the restart keeps the restored file.
+
 ## Reporting contract
 
 The reporter POSTs to:
